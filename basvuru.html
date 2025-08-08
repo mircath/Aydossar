@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AYDOS Üyelik Başvuru Formu</title>
+    <style>
+        /* Genel Stil */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            padding: 40px;
+            box-sizing: border-box;
+            border: 2px solid #a30000;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Başlık ve Logo */
+        .form-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ff4500;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 15px;
+            border-radius: 50%;
+            border: 4px solid #cc0000;
+            box-shadow: 0 0 15px rgba(204, 0, 0, 0.4);
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 15px rgba(204, 0, 0, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(204, 0, 0, 0.8); }
+            100% { box-shadow: 0 0 15px rgba(204, 0, 0, 0.4); }
+        }
+
+        .form-header h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #a30000;
+            text-transform: uppercase;
+        }
+
+        .form-header h3 {
+            margin: 5px 0 0;
+            font-size: 18px;
+            color: #444;
+        }
+
+        /* Form Bölümü */
+        h4 {
+            font-size: 20px;
+            text-align: center;
+            color: #cc0000;
+            text-transform: uppercase;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ff4500;
+            position: relative;
+        }
+        
+        h4::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -2px;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 4px;
+            background-color: #cc0000;
+            border-radius: 2px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #a30000;
+            transition: color 0.3s ease;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            background-color: #f8f8f8;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #cc0000;
+            box-shadow: 0 0 10px rgba(204, 0, 0, 0.3);
+            outline: none;
+            transform: scale(1.01);
+        }
+
+        /* Butonlar */
+        .button-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .submit-button {
+            width: 50%;
+            padding: 15px;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(204, 0, 0, 0.4);
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #submitEmail {
+            background-color: #cc0000;
+        }
+
+        #submitEmail:hover {
+            background-color: #990000;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(204, 0, 0, 0.6);
+        }
+
+        #submitWhatsapp {
+            background-color: #25D366; /* WhatsApp yeşili */
+        }
+
+        #submitWhatsapp:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Medya Sorguları */
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .button-group {
+                flex-direction: column;
+            }
+            .submit-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <div class="form-header">
+            <img src="https://i.ibb.co/pBP8nDjx/IMG-20250807-WA0004.jpg" alt="AYDOS Logosu" class="logo">
+            <h2>AYDOS EĞİTİM ARAŞTIRMA İNSANİ YARDIM VE ARAMA KURTARMA DERNEĞİ</h2>
+            <h3>ÜYE BİLGİLERİ FORMU</h3>
+        </div>
+
+        <form id="membershipForm">
+            <h4>Üye Bilgileri</h4>
+            
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="ad">ADI</label>
+                    <input type="text" id="ad" name="Adı" required>
+                </div>
+                <div class="form-group">
+                    <label for="soyad">SOYADI</label>
+                    <input type="text" id="soyad" name="Soyadı" required>
+                </div>
+                <div class="form-group">
+                    <label for="baba_adi">BABA ADI</label>
+                    <input type="text" id="baba_adi" name="Baba Adı" required>
+                </div>
+                <div class="form-group">
+                    <label for="anne_adi">ANNE ADI</label>
+                    <input type="text" id="anne_adi" name="Anne Adı" required>
+                </div>
+                <div class="form-group">
+                    <label for="dogum_yeri">DOĞUM YERİ</label>
+                    <input type="text" id="dogum_yeri" name="Doğum Yeri" required>
+                </div>
+                <div class="form-group">
+                    <label for="dogum_tarihi">DOĞUM TARİHİ</label>
+                    <input type="date" id="dogum_tarihi" name="Doğum Tarihi" required>
+                </div>
+                <div class="form-group">
+                    <label for="tc_kimlik_no">T.C. KİMLİK NO</label>
+                    <input type="text" id="tc_kimlik_no" name="T.C. Kimlik No" required>
+                </div>
+                <div class="form-group">
+                    <label for="meslek">MESLEĞİ</label>
+                    <input type="text" id="meslek" name="Mesleği" required>
+                </div>
+                <div class="form-group">
+                    <label for="kan_grubu">KAN GRUBU</label>
+                    <input type="text" id="kan_grubu" name="Kan Grubu">
+                </div>
+                <div class="form-group">
+                    <label for="ev_telefonu">EV TELEFONU</label>
+                    <input type="tel" id="ev_telefonu" name="Ev Telefonu">
+                </div>
+                <div class="form-group">
+                    <label for="telefonu">TELEFONU</label>
+                    <input type="tel" id="telefonu" name="Telefonu" required>
+                </div>
+                <div class="form-group">
+                    <label for="cep_telefonu">CEP TELEFONU</label>
+                    <input type="tel" id="cep_telefonu" name="Cep Telefonu" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-POSTA ADRESİ</label>
+                    <input type="email" id="email" name="E-Posta Adresi" required>
+                </div>
+                <div class="form-group">
+                    <label for="ogrenim_durumu">ÖĞRENİM DURUMU</label>
+                    <input type="text" id="ogrenim_durumu" name="Öğrenim Durumu">
+                </div>
+                <div class="form-group full-width">
+                    <label for="nufus_kayit">NÜFUS KAYIT (İl-İlçe-Mahalle-Köy-Cilt No-Aile Sıra No)</label>
+                    <input type="text" id="nufus_kayit" name="Nüfus Kayıt">
+                </div>
+                <div class="form-group full-width">
+                    <label for="ikamet_adresi">İKAMET ADRESİ</label>
+                    <textarea id="ikamet_adresi" name="İkamet Adresi" rows="3" required></textarea>
+                </div>
+                <div class="form-group full-width">
+                    <label for="is_adresi">İŞ ADRESİ</label>
+                    <textarea id="is_adresi" name="İş Adresi" rows="3"></textarea>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button type="button" id="submitEmail" class="submit-button">E-POSTA İLE GÖNDER</button>
+                <button type="button" id="submitWhatsapp" class="submit-button">WHATSAPP İLE GÖNDER</button>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('membershipForm');
+            const submitEmailBtn = document.getElementById('submitEmail');
+            const submitWhatsappBtn = document.getElementById('submitWhatsapp');
+
+            function getFormData() {
+                const formData = new FormData(form);
+                let messageBody = "AYDOS Üyelik Başvuru Formu Bilgileri:\n\n";
+                for (let [name, value] of formData.entries()) {
+                    messageBody += `${name}: ${value}\n`;
+                }
+                return encodeURIComponent(messageBody);
+            }
+
+            submitEmailBtn.addEventListener('click', function() {
+                if (form.checkValidity()) {
+                    const messageBody = getFormData();
+                    window.location.href = `mailto:aydosar@gmail.com?subject=AYDOS Üyelik Başvuru Formu&body=${messageBody}`;
+                } else {
+                    alert("Lütfen tüm zorunlu alanları doldurun.");
+                }
+            });
+
+            submitWhatsappBtn.addEventListener('click', function() {
+                if (form.checkValidity()) {
+                    const messageBody = getFormData();
+                    const phoneNumber = '905357380461'; // Türkiye telefon kodu ile birlikte
+                    window.open(`https://wa.me/${phoneNumber}?text=${messageBody}`, '_blank');
+                } else {
+                    alert("Lütfen tüm zorunlu alanları doldurun.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
