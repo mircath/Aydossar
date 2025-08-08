@@ -1,324 +1,209 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AYDOS Üyelik Başvuru Formu</title>
-    <style>
-        /* Genel Stil */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f2f5;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AYDOS Arama Kurtarma Üyelik Formu</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      background-size: 300% 300%;
+      animation: bgMove 15s ease infinite;
+      color: #f1f5f9;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
 
-        .form-container {
-            background-color: #ffffff;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 800px;
-            padding: 40px;
-            box-sizing: border-box;
-            border: 2px solid #a30000;
-            animation: fadeIn 1s ease-in-out;
-        }
+    @keyframes bgMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    .form-container {
+      background-color: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(10px);
+      border: 2px solid #dc2626;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(220, 38, 38, 0.4);
+      max-width: 960px;
+      width: 100%;
+    }
 
-        /* Başlık ve Logo */
-        .form-header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            text-align: center;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #ff4500;
-            margin-bottom: 30px;
-        }
+    .form-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
-        .logo {
-            width: 120px;
-            height: 120px;
-            margin-bottom: 15px;
-            border-radius: 50%;
-            border: 4px solid #cc0000;
-            box-shadow: 0 0 15px rgba(204, 0, 0, 0.4);
-            animation: pulse 2s infinite ease-in-out;
-        }
+    .form-header img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #dc2626;
+      box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+      margin: 0 auto;
+    }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 15px rgba(204, 0, 0, 0.4); }
-            50% { box-shadow: 0 0 25px rgba(204, 0, 0, 0.8); }
-            100% { box-shadow: 0 0 15px rgba(204, 0, 0, 0.4); }
-        }
+    .form-header h2 {
+      margin-top: 15px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #dc2626;
+    }
 
-        .form-header h2 {
-            margin: 0;
-            font-size: 24px;
-            color: #a30000;
-            text-transform: uppercase;
-        }
+    label {
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #fecaca;
+    }
 
-        .form-header h3 {
-            margin: 5px 0 0;
-            font-size: 18px;
-            color: #444;
-        }
+    input, select, textarea {
+      width: 100%;
+      padding: 16px;
+      font-size: 17px;
+      border: 1px solid #334155;
+      background-color: #1e293b;
+      color: #f1f5f9;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
 
-        /* Form Bölümü */
-        h4 {
-            font-size: 20px;
-            text-align: center;
-            color: #cc0000;
-            text-transform: uppercase;
-            margin-top: 0;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #ff4500;
-            position: relative;
-        }
-        
-        h4::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: -2px;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 4px;
-            background-color: #cc0000;
-            border-radius: 2px;
-        }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #dc2626;
+      box-shadow: 0 0 8px rgba(220, 38, 38, 0.5);
+    }
 
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 30px;
-        }
+    .submit-button {
+      background-color: #dc2626;
+      color: white;
+      font-weight: bold;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 8px;
+      margin: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 16px;
+    }
 
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
+    .submit-button:hover {
+      background-color: #ef4444;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 10px rgba(220, 38, 38, 0.5);
+    }
 
-        .form-group.full-width {
-            grid-column: 1 / -1;
-        }
-
-        label {
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: #a30000;
-            transition: color 0.3s ease;
-        }
-        
-        input, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
-            box-sizing: border-box;
-            background-color: #f8f8f8;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-        }
-
-        input:focus, textarea:focus {
-            border-color: #cc0000;
-            box-shadow: 0 0 10px rgba(204, 0, 0, 0.3);
-            outline: none;
-            transform: scale(1.01);
-        }
-
-        /* Butonlar */
-        .button-group {
-            display: flex;
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .submit-button {
-            width: 50%;
-            padding: 15px;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(204, 0, 0, 0.4);
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        #submitEmail {
-            background-color: #cc0000;
-        }
-
-        #submitEmail:hover {
-            background-color: #990000;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(204, 0, 0, 0.6);
-        }
-
-        #submitWhatsapp {
-            background-color: #25D366; /* WhatsApp yeşili */
-        }
-
-        #submitWhatsapp:hover {
-            background-color: #128C7E;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.6);
-        }
-
-        /* Medya Sorguları */
-        @media (max-width: 768px) {
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-            .button-group {
-                flex-direction: column;
-            }
-            .submit-button {
-                width: 100%;
-            }
-        }
-    </style>
+    .photo-preview {
+      margin-top: 10px;
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #dc2626;
+      box-shadow: 0 0 8px rgba(220, 38, 38, 0.5);
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
 </head>
 <body>
-
-    <div class="form-container">
-        <div class="form-header">
-            <img src="https://i.ibb.co/pBP8nDjx/IMG-20250807-WA0004.jpg" alt="AYDOS Logosu" class="logo">
-            <h2>AYDOS EĞİTİM ARAŞTIRMA İNSANİ YARDIM VE ARAMA KURTARMA DERNEĞİ</h2>
-            <h3>ÜYE BİLGİLERİ FORMU</h3>
-        </div>
-
-        <form id="membershipForm">
-            <h4>Üye Bilgileri</h4>
-            
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="ad">ADI</label>
-                    <input type="text" id="ad" name="Adı" required>
-                </div>
-                <div class="form-group">
-                    <label for="soyad">SOYADI</label>
-                    <input type="text" id="soyad" name="Soyadı" required>
-                </div>
-                <div class="form-group">
-                    <label for="baba_adi">BABA ADI</label>
-                    <input type="text" id="baba_adi" name="Baba Adı" required>
-                </div>
-                <div class="form-group">
-                    <label for="anne_adi">ANNE ADI</label>
-                    <input type="text" id="anne_adi" name="Anne Adı" required>
-                </div>
-                <div class="form-group">
-                    <label for="dogum_yeri">DOĞUM YERİ</label>
-                    <input type="text" id="dogum_yeri" name="Doğum Yeri" required>
-                </div>
-                <div class="form-group">
-                    <label for="dogum_tarihi">DOĞUM TARİHİ</label>
-                    <input type="date" id="dogum_tarihi" name="Doğum Tarihi" required>
-                </div>
-                <div class="form-group">
-                    <label for="tc_kimlik_no">T.C. KİMLİK NO</label>
-                    <input type="text" id="tc_kimlik_no" name="T.C. Kimlik No" required>
-                </div>
-                <div class="form-group">
-                    <label for="meslek">MESLEĞİ</label>
-                    <input type="text" id="meslek" name="Mesleği" required>
-                </div>
-                <div class="form-group">
-                    <label for="kan_grubu">KAN GRUBU</label>
-                    <input type="text" id="kan_grubu" name="Kan Grubu">
-                </div>
-                <div class="form-group">
-                    <label for="ev_telefonu">EV TELEFONU</label>
-                    <input type="tel" id="ev_telefonu" name="Ev Telefonu">
-                </div>
-                <div class="form-group">
-                    <label for="telefonu">TELEFONU</label>
-                    <input type="tel" id="telefonu" name="Telefonu" required>
-                </div>
-                <div class="form-group">
-                    <label for="cep_telefonu">CEP TELEFONU</label>
-                    <input type="tel" id="cep_telefonu" name="Cep Telefonu" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">E-POSTA ADRESİ</label>
-                    <input type="email" id="email" name="E-Posta Adresi" required>
-                </div>
-                <div class="form-group">
-                    <label for="ogrenim_durumu">ÖĞRENİM DURUMU</label>
-                    <input type="text" id="ogrenim_durumu" name="Öğrenim Durumu">
-                </div>
-                <div class="form-group full-width">
-                    <label for="nufus_kayit">NÜFUS KAYIT (İl-İlçe-Mahalle-Köy-Cilt No-Aile Sıra No)</label>
-                    <input type="text" id="nufus_kayit" name="Nüfus Kayıt">
-                </div>
-                <div class="form-group full-width">
-                    <label for="ikamet_adresi">İKAMET ADRESİ</label>
-                    <textarea id="ikamet_adresi" name="İkamet Adresi" rows="3" required></textarea>
-                </div>
-                <div class="form-group full-width">
-                    <label for="is_adresi">İŞ ADRESİ</label>
-                    <textarea id="is_adresi" name="İş Adresi" rows="3"></textarea>
-                </div>
-            </div>
-
-            <div class="button-group">
-                <button type="button" id="submitEmail" class="submit-button">E-POSTA İLE GÖNDER</button>
-                <button type="button" id="submitWhatsapp" class="submit-button">WHATSAPP İLE GÖNDER</button>
-            </div>
-        </form>
+  <div class="form-container">
+    <div class="form-header">
+      <img src="https://i.ibb.co/pBP8nDjx/IMG-20250807-WA0004.jpg" alt="AYDOS Logo" onerror="this.style.display='none';" />
+      <h2>AYDOS ARAMA KURTARMA ÜYELİK FORMU</h2>
     </div>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('membershipForm');
-            const submitEmailBtn = document.getElementById('submitEmail');
-            const submitWhatsappBtn = document.getElementById('submitWhatsapp');
 
-            function getFormData() {
-                const formData = new FormData(form);
-                let messageBody = "AYDOS Üyelik Başvuru Formu Bilgileri:\n\n";
-                for (let [name, value] of formData.entries()) {
-                    messageBody += `${name}: ${value}\n`;
-                }
-                return encodeURIComponent(messageBody);
-            }
+    <form id="membershipForm">
+      <label>Fotoğraf Yükle</label>
+      <input type="file" id="foto" name="Fotoğraf" accept="image/*" />
+      <img id="photoPreview" class="photo-preview" src="#" style="display:none" />
 
-            submitEmailBtn.addEventListener('click', function() {
-                if (form.checkValidity()) {
-                    const messageBody = getFormData();
-                    window.location.href = `mailto:aydosar@gmail.com?subject=AYDOS Üyelik Başvuru Formu&body=${messageBody}`;
-                } else {
-                    alert("Lütfen tüm zorunlu alanları doldurun.");
-                }
-            });
+      <label>Adı</label>
+      <input type="text" name="Adı" />
+      <label>Soyadı</label>
+      <input type="text" name="Soyadı" />
+      <label>Baba Adı</label>
+      <input type="text" name="Baba Adı" />
+      <label>Anne Adı</label>
+      <input type="text" name="Anne Adı" />
+      <label>Doğum Yeri</label>
+      <input type="text" name="Doğum Yeri" />
 
-            submitWhatsappBtn.addEventListener('click', function() {
-                if (form.checkValidity()) {
-                    const messageBody = getFormData();
-                    const phoneNumber = '905357380461'; // Türkiye telefon kodu ile birlikte
-                    window.open(`https://wa.me/${phoneNumber}?text=${messageBody}`, '_blank');
-                } else {
-                    alert("Lütfen tüm zorunlu alanları doldurun.");
-                }
-            });
-        });
-    </script>
+      <label>Doğum Tarihi</label>
+      <div style="display: flex; gap: 10px;">
+        <select name="Doğum Günü"><option disabled selected>Gün</option><script>for(let i=1;i<=31;i++)document.write(`<option>${i}</option>`);</script></select>
+        <select name="Doğum Ayı"><option disabled selected>Ay</option><option>Ocak</option><option>Şubat</option><option>Mart</option><option>Nisan</option><option>Mayıs</option><option>Haziran</option><option>Temmuz</option><option>Ağustos</option><option>Eylül</option><option>Ekim</option><option>Kasım</option><option>Aralık</option></select>
+        <select name="Doğum Yılı"><option disabled selected>Yıl</option><script>for(let i=2025;i>=1900;i--)document.write(`<option>${i}</option>`);</script></select>
+      </div>
+
+      <label>T.C. Kimlik No</label>
+      <input type="text" name="T.C. Kimlik No" />
+      <label>Mesleği</label>
+      <input type="text" name="Mesleği" />
+      <label>Kan Grubu</label>
+      <select name="Kan Grubu">
+        <option disabled selected>Seçiniz</option>
+        <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+        <option>AB+</option><option>AB-</option><option>0+</option><option>0-</option>
+      </select>
+      <label>Cep Telefonu</label>
+      <input type="tel" name="Cep Telefonu" />
+      <label>E-Posta</label>
+      <input type="email" name="E-Posta Adresi" />
+      <label>İkamet Adresi</label>
+      <textarea name="İkamet Adresi" rows="4"></textarea>
+
+      <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+        <button type="button" id="submitEmail" class="submit-button">📧 E-Posta ile Gönder</button>
+        <button type="button" id="submitWhatsapp" class="submit-button">📱 WhatsApp ile Gönder</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const photoInput = document.getElementById('foto');
+    const photoPreview = document.getElementById('photoPreview');
+    photoInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          photoPreview.src = event.target.result;
+          photoPreview.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    function getFormData() {
+      const form = document.getElementById('membershipForm');
+      const data = new FormData(form);
+      let msg = "🚨 *AYDOS Üyelik Bilgileri*\n\n";
+      data.forEach((val, key) => {
+        msg += `🔹 *${key}:* ${val}\n`;
+      });
+      return encodeURIComponent(msg);
+    }
+
+    document.getElementById('submitEmail').onclick = () => {
+      const body = getFormData();
+      window.location.href = `mailto:aydosar@gmail.com?subject=Üyelik Başvuru Formu&body=${body}`;
+    };
+
+    document.getElementById('submitWhatsapp').onclick = () => {
+      const body = getFormData();
+      const phone = "905357380461";
+      window.open(`https://wa.me/${phone}?text=${body}`, "_blank");
+    };
+  </script>
 </body>
 </html>
